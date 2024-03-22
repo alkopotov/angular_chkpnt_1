@@ -12,7 +12,7 @@ import { log } from 'console';
 })
 export class ProductListComponent {
 
-  public productListService = inject(ProductListService)
+  public productListService = inject(ProductListService);
 
   ngOnInit(): void {
     this.productListService.fetchProducts();

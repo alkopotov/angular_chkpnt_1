@@ -1,6 +1,6 @@
 
 <div class="product_list">
-  @for (product of productListService.products; track product.id) {
+  @for (product of productListService.displayedProducts; track product.id) {
     <app-product-item
       [image]="product.images[0]"
       [title]="product.title"

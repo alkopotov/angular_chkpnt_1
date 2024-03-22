@@ -1,27 +1,63 @@
 <section>
   <div class="input_area">
     <label> Search title
-      <input type="text" class="text_input">
+      <input type="text"
+       class="text_input"
+      [(ngModel)]="productListService.searchValue"
+      >
     </label>
     <label> Select category
-      <select name="" id="" class="text_input"></select>
+      <select class="text_input" [(ngModel)]="productListService.categorySelected">
+        @for (option of productListService.categories; track $index) {
+          <option [value]="option">{{option}}</option>
+        }
+      </select>
     </label>
     
   </div>
   <div class="input_range_area">
     <div>
-      <label> Price range: </label>
+      <label class="range_label">Price range:
+        @if (productListService.displayedProducts.length === 0) {
+          <span>no products</span>
+
+        }
+        @else if (productListService.currentPrice === '') {
+          <span>{{productListService.priceRangeValue}}</span>
+        }
+        @else {
+          <span>{{productListService.currentPrice}}</span>
+        }
+      </label>
       <div class="range_limits">
-        <p>0</p><p>100</p>
+        @if (productListService.displayedProducts.length === 0) {
+          <p>0</p><p>0</p>
+        }
+        @else {
+          <p>{{productListService.priceRangeMin}}</p><p>{{productListService.priceRangeMax}}</p>
+        }
+        
       </div>
-      <input type="range">
+      <input
+        type="range"
+        [(ngModel)]="productListService.currentPrice"
+        [min]="productListService.priceRangeMin"
+        [max]="productListService.priceRangeMax"
+        [value]="productListService.priceRangeValue"
+       
+      >
     </div>
     <div>
-      <label> Rating range: </label>
+      <label class="range_label"> Rating range: <span>{{productListService.maxRating}}</span></label>
       <div class="range_limits">
-        <p>1</p><p>5</p>
+        <p>0</p><p>5</p>
       </div>
-      <input type="range">
+      <input
+        type="range"
+        [(ngModel)]="productListService.maxRating"
+        min="0"
+        max="5"
+      >
     </div>
   </div>
 </section>
