@@ -4,10 +4,15 @@
       <input type="text"
        class="text_input"
       [(ngModel)]="productListService.searchValue"
+      (click)="productListService.resetPriceInput()"
       >
     </label>
     <label> Select category
-      <select class="text_input" [(ngModel)]="productListService.categorySelected">
+      <select
+        class="text_input" 
+        [(ngModel)]="productListService.categorySelected"
+        (change)="productListService.resetPriceInput()"
+      >
         @for (option of productListService.categories; track $index) {
           <option [value]="option">{{option}}</option>
         }
@@ -23,7 +28,7 @@
 
         }
         @else if (productListService.currentPrice === '') {
-          <span>{{productListService.priceRangeValue}}</span>
+          <span>{{productListService.defaultValue}}</span>
         }
         @else {
           <span>{{productListService.currentPrice}}</span>
@@ -34,16 +39,16 @@
           <p>0</p><p>0</p>
         }
         @else {
-          <p>{{productListService.priceRangeMin}}</p><p>{{productListService.priceRangeMax}}</p>
+          <p>{{productListService.minPrice}}</p><p>{{productListService.maxPrice}}</p>
         }
         
       </div>
       <input
         type="range"
         [(ngModel)]="productListService.currentPrice"
-        [min]="productListService.priceRangeMin"
-        [max]="productListService.priceRangeMax"
-        [value]="productListService.priceRangeValue"
+        [min]="productListService.minPrice"
+        [max]="productListService.maxPrice"
+        [value]="productListService.defaultValue"
        
       >
     </div>
@@ -57,6 +62,7 @@
         [(ngModel)]="productListService.maxRating"
         min="0"
         max="5"
+        (change)="productListService.resetPriceInput()"
       >
     </div>
   </div>
