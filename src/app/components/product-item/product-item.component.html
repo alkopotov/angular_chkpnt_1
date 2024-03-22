@@ -1,0 +1,12 @@
+<div class="product_item">
+  <img [src]="image" [alt]="title + ' picture'">
+  <p>Title: {{title}}</p>
+  <p>Category: {{category}}</p>
+  <p>Price: {{price}}$</p>
+  <div class="rating">
+    <app-rating-elem
+    [rating]="rating"/>
+  </div>
+  
+</div>
+

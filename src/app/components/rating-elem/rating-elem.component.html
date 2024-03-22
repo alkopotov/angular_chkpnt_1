@@ -1,0 +1,6 @@
+<div className="rating">
+  
+  @for (star of [1, 2, 3, 4, 5]; track $index) {
+    <fa-icon [icon]="faStar" [class]="(star <= getIntRating()) ? 'dark' : 'light'"></fa-icon>
+  }
+</div>

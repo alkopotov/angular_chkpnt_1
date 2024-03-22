@@ -1,0 +1,12 @@
+
+<div class="product_list">
+  @for (product of productListService.products; track product.id) {
+    <app-product-item
+      [image]="product.images[0]"
+      [title]="product.title"
+      [category]="product.category"
+      [price]="product.price"
+      [rating]="product.rating"
+    />
+  }
+</div>

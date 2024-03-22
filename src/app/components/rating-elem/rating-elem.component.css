@@ -1,0 +1,12 @@
+.dark {
+  color: #607068;
+}
+
+.light {
+  color: #6B9080;
+}
+
+.rating {
+  display: flex;
+  gap: 3px;
+}
